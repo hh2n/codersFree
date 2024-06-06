@@ -62,4 +62,35 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // Relacion uno a uno 
+    public function profile() {
+        return $this->hasOne('App\Models\Profile');
+    }
+
+    //Relacion uno a muchos 
+    public function courses_dictated() {
+        return $this->hasMany('App\Models\Course');
+    }
+
+    public function reviews() {
+        return $this->hasMany('App\Models\Course');
+    }
+    
+    public function comments() {
+        return $this->hasMany('App\Models\Comment');
+    }
+    
+    public function reaction() {
+        return $this->hasMany('App\Models\Reaction');
+    }
+
+    // Relacion muchos a muchos 
+    public function courses_enrolled() {
+        return $this->belongsToMany('App\Models\Course');
+    }
+
+    public function lessons() {
+        return $this->belongsToMany('App\Models\Lesson');
+    }
 }
