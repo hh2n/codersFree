@@ -9,6 +9,8 @@ class Section extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
      // Relacion de uno a muchos 
      public function lessons() {
         return $this->hasMany('App\Models\Lesson');

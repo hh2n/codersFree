@@ -9,6 +9,8 @@ class Lesson extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     // Relacion uno a uno
     public function description() {
         return $this->hasOne('App\Models\Description');
