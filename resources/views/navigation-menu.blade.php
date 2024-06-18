@@ -4,6 +4,11 @@
             'name' => 'Home',
             'route' => route('home'),
             'active' => request()->routeIs('home')
+        ],
+        [
+            'name' => 'Cursos',
+            'route' => route('courses.index'),
+            'active' => request()->routeIs('courses.*')
         ]
     ];
 @endphp
@@ -139,7 +144,7 @@
                             class="rounded-md px-3 py-2 text-gray-500 ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
                             :active="request()->routeIs('login')"
                         >
-                            Log in
+                            Login
                         </a>
 
                         @if (Route::has('register'))
