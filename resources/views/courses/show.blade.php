@@ -92,13 +92,27 @@
                             <a class="text-blue-400 text-sm font-bold" href="">{{'@'.Str::slug($course->teacher->name, '')}}</a>
                         </div>
                     </div>
-                    <a 
-                        href="" 
-                        class="bg-red-500 hover:bg-red-700 w-full block text-white font-bold py-2 px-4 rounded text-center mt-4"
-                    >
-                        <i class="fas fa-shopping-basket mr-2"></i>
-                        Llevar este curso
-                    </a>
+
+                    @can('enrolled', $course)
+                        <a 
+                            href="{{route('course.status', $course)}}" 
+                            class="bg-red-500 hover:bg-red-700 w-full block text-white font-bold py-2 px-4 rounded text-center mt-4"
+                        >
+                            Continuar con el curso
+                        </a>
+                    @else
+                        <form action="{{route('courses.enrolled', $course)}}" method="post">
+                            @csrf
+                            <button 
+                                type="submit"
+                                class="bg-red-500 hover:bg-red-700 w-full block text-white font-bold py-2 px-4 rounded text-center mt-4"
+                            >
+                                <i class="fas fa-shopping-basket mr-2"></i>
+                                Llevar este curso
+                            </button>
+                        </form>
+                    @endcan
+
                 </div>
             </section>
             <aside class="hidden lg:block">
