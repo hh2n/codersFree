@@ -95,7 +95,7 @@
 
                     @can('enrolled', $course)
                         <a 
-                            href="{{route('course.status', $course)}}" 
+                            href="{{route('courses.status', $course)}}" 
                             class="bg-red-500 hover:bg-red-700 w-full block text-white font-bold py-2 px-4 rounded text-center mt-4"
                         >
                             Continuar con el curso
