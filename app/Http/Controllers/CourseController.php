@@ -3,15 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
+    use AuthorizesRequests;
+    
     public function index(){
         return view('courses.index');
     }
 
     public function show(Course $course){
+
+        $this->authorize('published', $course);
 
         $similares = Course::where('category_id', $course->category_id)
         ->where('id', '!=', $course->id)
