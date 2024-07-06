@@ -36,16 +36,15 @@
                         <tr>
                             <td>#{{$role->id}}</td>
                             <td>{{$role->name}}</td>
-                            <td width="100px">
+                            <td width="50px">
                                 <a 
                                     class="btn btn-secondary btn-sm"
                                     href="{{route('admin.roles.edit', $role)}}"
                                 >
                                     <i class="fas fa-edit"></i>
-                                    Editar
                                 </a>
                             </td>
-                            <td width="100px">
+                            <td width="50px">
                                 <form action="{{route('admin.roles.destroy', $role)}}" method="POST">
                                     @method('delete')
                                     @csrf
@@ -53,7 +52,6 @@
                                         class="btn btn-danger btn-sm"
                                     >
                                         <i class="fas fa-trash-alt"></i>
-                                        Elimiar
                                     </button>
                                 </form>
                             </td>
