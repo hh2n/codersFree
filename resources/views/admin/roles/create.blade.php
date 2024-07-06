@@ -3,11 +3,24 @@
 @section('title', 'Coders Free')
 
 @section('content_header')
-    <h1>Coders Free - Curso</h1>
+    <h1>Crear nuevo rol</h1>
 @stop
 
 @section('content')
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos ea ipsa natus modi asperiores distinctio, blanditiis voluptate quis ipsum numquam, vel soluta debitis eum nam ullam culpa error explicabo. Debitis!.</p>
+    <div class="card">
+        <div class="card-body">
+            <form action="{{route('admin.roles.store')}}" method="POST">
+                @csrf
+                @method('post')
+                @include('admin.roles.partials.form')
+                <hr>
+                <button type="submit" class="btn btn-primary btn-sm">
+                    <i class="fas fa-save fa-sm mr-1"></i>
+                    Crear role
+                </button>
+            </form>
+        </div>
+    </div>
 @stop
 
 @section('css')
