@@ -19,7 +19,7 @@
         <div class="card-header">
             <a class="btn btn-primary btn-sm" href="{{route('admin.roles.create')}}">
                 <i class="fas fa-plus-circle fa-sm mr-1"></i>
-                Crear Curso
+                Crear Role
             </a>
         </div>
         <div class="card-body">

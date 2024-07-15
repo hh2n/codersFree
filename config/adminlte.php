@@ -319,17 +319,20 @@ return [
             'text' => 'Home',
             'route' => 'admin.home',
             'icon' => 'fas fa-fw fa-home',
+            'can'   => 'Ver Dashboard'
         ],
         [
             'text' => 'Lista de roles',
             'route' => 'admin.roles.index',
             'icon' => 'fas fa-fw fa-users-cog',
+            'can'   => 'Listar role',
             'active' => ['admin/roles*'],
         ],
         [
             'text' => 'Usuarios',
             'route' => 'admin.users.index',
             'icon' => 'fas fa-fw fa-users',
+            'can'   => 'Leer usuarios',
             'active' => ['admin/users*'],
         ],
         ['header' => 'account_settings'],

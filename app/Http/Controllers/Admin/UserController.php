@@ -5,11 +5,22 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use Spatie\Permission\Models\Role;
 
-class UserController extends Controller
+class UserController extends Controller implements HasMiddleware
 {
+
+    public static function middleware() : array
+    {
+        return [ 
+            'auth', 
+            new Middleware('can:Leer usuarios', only: ['index']),
+            new Middleware('can:Editar usuarios', only: ['edit','update'])
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      */
