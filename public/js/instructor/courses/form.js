@@ -1,9 +1,9 @@
 //Slug automático
-document.getElementById("title_course").addEventListener('keyup', slugChange);
+document.getElementById("title").addEventListener('keyup', slugChange);
 
 function slugChange(){
-    title = document.getElementById("title_course").value;
-    document.getElementById("slug_course").value = slug(title);
+    title = document.getElementById("title").value;
+    document.getElementById("slug").value = slug(title);
 }
 
 function slug (str) {
@@ -19,7 +19,7 @@ function slug (str) {
 
 //CKEDITOR
 ClassicEditor
-.create( document.querySelector( '#description_course' ), {
+.create( document.querySelector( '#description' ), {
     toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'blockQuote' ],
     heading: {
         options: [
