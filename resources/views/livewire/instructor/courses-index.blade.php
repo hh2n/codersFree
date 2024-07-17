@@ -1,12 +1,17 @@
 <div class="container py-8">
     <x-table-responsive>
         
-        <div class="px-6 py-4">
+        <div class="px-6 py-4 flex">
             <input 
                 wire:keydown="limpiar_page"
                 wire:model.live="search"
-                class="form-control form-control-sm w-full shadow-sm focus:outline-none rounded-lg" 
+                class="form-control form-control-sm flex-1 shadow-sm focus:outline-none rounded-lg" 
                 placeholder="Ingresa nombre de curso">
+            
+            <a 
+                class="inline-flex items-center px-4 py-2 bg-indigo-500 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 transition ease-in-out duration-150 ml-2" 
+                href="{{route('instructor.courses.create')}}" 
+            >  <i class="fas fa-plus-circle mr-2"></i> Nuevo curso</a>
         </div>
         
         @if ($courses->count())
@@ -98,7 +103,8 @@
                                 @endswitch
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <a 
+                                <a
+                                    href="{{route('instructor.courses.edit', $course)}}"
                                     class="inline-flex items-center rounded-md bg-gray-50 px-2 py-2 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10 cursor-pointer"
                                 >
                                     <i class="fas fa-edit fa-lg"></i>
