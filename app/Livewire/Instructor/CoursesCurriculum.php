@@ -41,7 +41,7 @@ class CoursesCurriculum extends Component
 
     public function store() {
 
-        $this->validate();
+        $this->validate(['newname' => 'required']);
 
         Section::create([
             'name' => $this->newname,

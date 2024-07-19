@@ -35,7 +35,7 @@
                         @enderror
                     </form>
                 @else
-                    <header class="flex justify-between items-center">
+                    <header class="flex justify-between items-center mb-2">
                         <h1 class="cursor-pointer"><strong>Sección: </strong> {{$item->name}}</h1>
                         <div>
                             <i 
@@ -48,12 +48,16 @@
                             ></i>
                         </div>
                     </header>
+                    <div>
+                        @livewire('instructor.course-lesson', ['section' => $item], key($item->id))
+                    </div>
                 @endif
 
             </div>
         </div>
     @endforeach
 
+    {{-- Formulario para agregar nueva Seccion --}}
     <div x-data="{open: false}">
         <a x-show="!open" x-on:click="open=true" class="flex items-center cursor-pointer mb-2 border rounded-lg p-2">
             <i class="far fa-plus-square fa-lg text-red-500 mr-2"></i>
@@ -71,7 +75,7 @@
                         class="form-control form-control-sm shadow-sm focus:outline-none rounded-lg w-full"
                         placeholder="Escribe el nombre de la sección"
                     >
-                    @error('name')
+                    @error('newname')
                         <span class="text-xs text-red-500">{{$message}}</span>
                     @enderror
                 </div>
