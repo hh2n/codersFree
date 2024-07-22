@@ -1,7 +1,7 @@
 <div class="border-double border-4 rounded-lg p-2">
     {{-- The Master doesn't talk, he acts. --}}
     @foreach ($section->lessons as $item)
-        <div class="card mt-2">
+        <article class="card mt-2" x-data="{open: false}">
             <div class="card-body">
 
                 @if ($lesson->id == $item->id)
@@ -48,7 +48,7 @@
                                 class="rounded-md bg-gray-200 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
                             >
                                 <i class="fas fa-power-off mr-1"></i>
-                                Cancel
+                                Cancelar
                             </button>
                             <button 
                                 type="submit"
@@ -61,15 +61,21 @@
                     </form>
                 @else    
                     <header>
-                        <h1> <i class="far fa-play-circle text-blue-400 mr-1"></i> Lección: {{$item->name}}</h1>
+                        <h1 x-on:click="open = !open" class="cursor-pointer">
+                            <i class="far fa-play-circle text-blue-400 mr-1"></i> 
+                            Lección: {{$item->name}}
+                        </h1>
                     </header>
 
-                    <div>
+                    <div x-show="open">
+                        <hr class="my-2">
+
                         <p class="text-sm">Plataforma: {{$item->platform->name}}</p>
                         <p class="text-sm">Enlace: <a class="text-blue-600" href="{{$item->url}}" target="_blank">{{$item->url}}</a></p>
+                        
                         <hr class="shadow mt-4 mb-2">
+                        
                         <div class="flex justify-end">
-                            
                             <button 
                                 wire:click="edit({{$item}})"
                                 class="rounded-md bg-sky-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 mr-2"
@@ -79,11 +85,22 @@
                                 class="rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
                             ><i class="fas fa-trash mr-1"></i> Eliminar</button>
                         </div>
+
+                        {{-- Agregando descripción --}}
+                        <div class="mb-4">
+                            @livewire('instructor.lesson-description', ['lesson' => $item], key('lesson-description-'.$item->id))
+                        </div>
+
+                        {{-- Agregando resources --}}
+                        <div>
+                            @livewire('instructor.lesson-resources', ['lesson' => $item], key('lesson-resources-'.$item->id))
+                        </div>
+                        
                     </div>
                 @endif
 
             </div>
-        </div>
+        </article>
     @endforeach
 
     {{-- Formulario para agregar lecciones  --}}

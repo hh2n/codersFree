@@ -18,7 +18,7 @@
     @endif
 
     @foreach ($course->sections as $item)
-        <div class="card mb-6">
+        <article class="card mb-3 border-2 border-dashed shadow-lg" x-data="{open: false}">
             <div class="card-body bg-gray-100">
                 
                 @if ($section->id == $item->id)
@@ -36,7 +36,9 @@
                     </form>
                 @else
                     <header class="flex justify-between items-center mb-2">
-                        <h1 class="cursor-pointer"><strong>Sección: </strong> {{$item->name}}</h1>
+                        <h1 class="cursor-pointer" x-on:click="open = !open">
+                            <strong>Sección: </strong> {{$item->name}}
+                        </h1>
                         <div>
                             <i 
                                 class="fas fa-edit cursor-pointer text-blue-400 m-2"
@@ -48,13 +50,13 @@
                             ></i>
                         </div>
                     </header>
-                    <div>
+                    <div x-show="open">
                         @livewire('instructor.course-lesson', ['section' => $item], key($item->id))
                     </div>
                 @endif
 
             </div>
-        </div>
+        </article>
     @endforeach
 
     {{-- Formulario para agregar nueva Seccion --}}
