@@ -14,6 +14,7 @@ class CoursesStudents extends Component
 
     public function mount(Course $course) {
         $this->course = $course;
+        $this->authorize('dicatated', $course);
     }
 
     public function updatingSearch() {
@@ -27,6 +28,6 @@ class CoursesStudents extends Component
         return view(
             'livewire.instructor.courses-students', 
             compact('students')
-        )->layout('layouts.instructor');
+        )->layout('layouts.instructor', ['course' => $this->course]);
     }
 }

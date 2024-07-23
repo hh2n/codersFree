@@ -10,9 +10,25 @@ use App\Models\Price;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class CourseController extends Controller
+class CourseController extends Controller implements HasMiddleware
 {
+    use AuthorizesRequests;
+
+    public static function middleware() : array
+    {
+        return [ 
+            'auth', 
+            new Middleware('can:Leer cursos', only: ['index']),
+            new Middleware('can:Crear cursos', only: ['create','store']),
+            new Middleware('can:Actualizar cursos', only: ['edit','update', 'goals']),
+            new Middleware('can:Eliminar cursos', only: ['destroy']),
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -71,6 +87,8 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
+        $this->authorize('dicatated', $course);
+
         $categories = Category::all();
         $levels = Level::all();
         $prices = Price::all();
@@ -83,6 +101,8 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
+        $this->authorize('dicatated', $course);
+        
         $request->validate([
             'title' => 'required',
             'slug' => 'required|unique:courses,slug,'.$course->id,
@@ -122,6 +142,16 @@ class CourseController extends Controller
     }
     
     public function goals(Course $course) {
+        $this->authorize('dicatated', $course);
+        
         return view('instructor.courses.goals', compact('course'));
+    }
+
+    public function status(Course $course) {
+        $course->status = 2;
+        $course->save();
+
+        return back();
+
     }
 }
