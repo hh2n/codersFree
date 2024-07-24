@@ -132,12 +132,15 @@
                     <hr class="border border-double shadow-lg mt-4 mb-6">
                     <form action="{{route('admin.courses.approved', $course)}}" class="mt-4" method="POST">
                         @csrf
-                        <button type="submit" class="bg-red-500 hover:bg-red-700 w-full block text-white font-bold py-2 px-4 rounded text-center mt-4">
-                            <i class="fas fa-check-double mr-1"></i>
+                        <button type="submit" class="bg-sky-500 hover:bg-sky-700 w-full block text-white font-bold py-2 px-4 rounded text-center mt-4">
+                            <i class="fas fa-check-double mr-2"></i>
                             Aprovar curso
                         </button>
                     </form>
-
+                    <a href="{{route('admin.courses.observation', $course)}}" class="bg-red-500 hover:bg-red-700 w-full block text-white font-bold py-2 px-4 rounded text-center mt-4">
+                        <i class="fas fa-comment-alt mr-2"></i>
+                        Observar curso
+                    </a>
                 </div>
             </section>
             <aside class="hidden lg:block">

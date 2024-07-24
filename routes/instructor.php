@@ -16,3 +16,5 @@ Route::get('course/{course}/goals', [CourseController::class, 'goals'])->name('c
 Route::get('course/{course}/students', CoursesStudents::class)->middleware('can:Actualizar cursos')->name('courses.students');
 
 Route::post('course/{course}/status', [CourseController::class, 'status'])->name('courses.status');
+
+Route::get('course/{course}/observation', [CourseController::class, 'observation'])->name('courses.observation');
