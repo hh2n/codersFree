@@ -337,9 +337,14 @@ return [
         ],
         ['header' => 'Opciones de Curso'],
         [
+            'text' => 'Categorías',
+            'route' => 'admin.categories.index',
+            'icon' => 'fas fa-certificate',
+        ],
+        [
             'text' => 'Revisiones Pendientes',
             'route' => 'admin.courses.index',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-tasks',
         ],
         [
             'text' => 'change_password',
