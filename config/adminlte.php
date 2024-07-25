@@ -339,7 +339,17 @@ return [
         [
             'text' => 'Categorías',
             'route' => 'admin.categories.index',
-            'icon' => 'fas fa-certificate',
+            'icon' => 'fas fa-fw fa-certificate',
+        ],
+        [
+            'text' => 'Niveles',
+            'route' => 'admin.levels.index',
+            'icon' => 'fas fa-fw fa-chart-line',
+        ],
+        [
+            'text' => 'Precios',
+            'route' => 'admin.prices.index',
+            'icon' => 'fab fa-fw fa-cc-visa',
         ],
         [
             'text' => 'Revisiones Pendientes',
