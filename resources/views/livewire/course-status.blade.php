@@ -15,16 +15,25 @@
                 </div>
             @endif
             
-            <div class="flex items-center mt-4 cursor-pointer" wire:click="completed">
-                @if ($current->completed)    
-                    <i class="fas fa-toggle-on text-xl text-blue-600"></i>
-                @else
-                    <i class="fas fa-toggle-off text-xl text-gray-600"></i>
+            {{-- Marcar como culminado --}}
+            <div class="flex justify-between mt-4">
+                <div class="flex items-center cursor-pointer" wire:click="completed">
+                    @if ($current->completed)    
+                        <i class="fas fa-toggle-on text-xl text-blue-600"></i>
+                    @else
+                        <i class="fas fa-toggle-off text-xl text-gray-600"></i>
+                    @endif
+                    <p class="text-sm ml-2 text-gray-700">Marcar esta unidad como culminada</p>
+                </div>
+                @if ($current->resource)    
+                    <div class="flex items-center cursor-pointer" wire:click="download">
+                        <i class="fas fa-cloud-download-alt text-xl text-gray-600 mr-1"></i>
+                        <p class="text-sm text-gray-700">Descargar recursos</p>
+                    </div>
                 @endif
-                <p class="text-sm ml-2">Marcar esta unidad como culminada</p>
             </div>
 
-            <div class="card mt-2">
+            <div class="card mt-4">
                 <div class="card-body flex text-gray-500 font-bold">
                     @if ($this->previous)    
                         <a wire:click="changeLesson({{$this->previous}})" class="cursor-pointer">Tema anterior</a>
@@ -35,16 +44,6 @@
                     @endif
                 </div>
             </div>
-
-           <p>Indice: {{$this->index}}</p>
-
-           <p>Previous: @if ($this->previous)
-            {{$this->previous->id}}
-           @endif</p>
-
-           <p>Next: @if ($this->next)
-            {{$this->next->id}}
-           @endif</p>
 
         </div>
 

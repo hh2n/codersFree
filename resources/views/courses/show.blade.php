@@ -35,7 +35,7 @@
             </section>
 
             <section class="mb-12">
-                <h1 class="font-bold text-3xl mb-2">Temario</h1>
+                <h1 class="font-bold text-3xl mb-2 text-gray-700">Temario</h1>
 
                 @foreach ($course->sections as $section)
                     <article class="mb-4 shadow" 
@@ -64,7 +64,7 @@
             </section>
 
             <section class="mb-8">
-                <h1 class="text-gray-800 font-bold text-3xl">Requesitos</h1>
+                <h1 class="text-gray-700 font-bold text-3xl">Requesitos</h1>
 
                 <ul class="list-disc list-inside p-2">
                     @foreach ($course->requirements as $requirement)
@@ -75,12 +75,15 @@
             </section>
 
             <section>
-                <h1 class="text-gray-800 font-bold text-3xl mb-2">Descripción</h1>
+                <h1 class="text-gray-700 font-bold text-3xl mb-2">Descripción</h1>
 
                 <div class="text-gray-700 text-base">
                     {!! $course->description !!}
                 </div>
             </section>
+
+            @livewire('courses-reviews', ['course' => $course], key($course->id))
+
         </div>
         <div class="order-1 col-span-1 lg:order-2">
             <section class="bg-white shadow-lg rounded overflow-hidden mb-4">
